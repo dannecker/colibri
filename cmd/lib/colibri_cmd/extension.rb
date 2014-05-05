@@ -50,7 +50,7 @@ module ColibriCmd
       end
 
       def colibri_version
-        '2.3.0.beta'
+        '0.8'
       end
 
       def use_prefix(prefix)

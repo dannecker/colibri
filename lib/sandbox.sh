@@ -10,7 +10,7 @@ fi
 
 cd ./sandbox
 echo "gem 'colibri', :path => '..'" >> Gemfile
-echo "gem 'colibri_auth_devise', :path => '../colibri_auth_devise/'" >> Gemfile
+echo "gem 'colibri_auth_devise', :path => '../../colibri_auth_devise/'" >> Gemfile
 
 bundle install --gemfile Gemfile
 bundle exec rails g colibri:install --auto-accept --user_class=Colibri::User

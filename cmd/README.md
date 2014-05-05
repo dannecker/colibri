@@ -6,7 +6,7 @@ Colibri Installer
 Command line utility to create new Colibri store applications
 and extensions
 
-See the main colibri project: https://github.com/colibri/colibri
+See the main colibri project: https://github.com/dannecker/colibri
 
 Installation
 ------------
@@ -52,5 +52,3 @@ Options
   * `--branch=my_changes` to use git branch
   * `--ref=23423423423423` to use git reference
   * `--tag=my_tag` to use git tag
-
-

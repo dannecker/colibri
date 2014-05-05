@@ -4,7 +4,7 @@ require 'rake/testtask'
 require 'rake/packagetask'
 require 'rubygems/package_task'
 require 'rspec/core/rake_task'
-require 'colibri/testing_support/common_rake'
+#require 'colibri/testing_support/common_rake'
 
 Bundler::GemHelper.install_tasks
 RSpec::Core::RakeTask.new
@@ -23,7 +23,7 @@ end
 task :default => :spec
 
 desc "Generates a dummy app for testing"
-task :test_app do
+task :test_colibri do
   ENV['LIB_NAME'] = 'colibri/backend'
-  Rake::Task['common:test_app'].invoke
+  Rake::Task['common:test_colibri'].invoke
 end

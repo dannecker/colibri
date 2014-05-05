@@ -1,8 +1,8 @@
 Colibri::Core::Engine.add_routes do
-  get '/admin', :to => 'admin/orders#index', :as => :admin
+  get '/backoffice', to: 'admin/orders#index', as: :admin
 
-  namespace :admin do
-    get '/search/users', :to => "search#users", :as => :search_users
+  scope :backoffice, module: :admin, as: :admin do
+    get '/search/users', to: "search#users", as: :search_users
 
     resources :promotions do
       resources :promotion_rules
@@ -40,7 +40,7 @@ Colibri::Core::Engine.add_routes do
       resources :variants_including_master, :only => [:update]
     end
 
-    get '/variants/search', :to => "variants#search", :as => :search_variants
+    get '/variants/search', to: "variants#search", as: :search_variants
 
     resources :option_types do
       collection do
@@ -49,7 +49,7 @@ Colibri::Core::Engine.add_routes do
       end
     end
 
-    delete '/option_values/:id', :to => "option_values#destroy", :as => :option_value
+    delete '/option_values/:id', to: "option_values#destroy", as: :option_value
 
     resources :properties do
       collection do
@@ -57,7 +57,7 @@ Colibri::Core::Engine.add_routes do
       end
     end
 
-    delete '/product_properties/:id', :to => "product_properties#destroy", :as => :product_property
+    delete '/product_properties/:id', to: "product_properties#destroy", as: :product_property
 
     resources :prototypes do
       member do

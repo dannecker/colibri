@@ -1,5 +1,5 @@
 module Colibri
   def self.version
-    "2.3.0.beta"
+    "0.8"
   end
 end

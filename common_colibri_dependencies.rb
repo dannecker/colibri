@@ -1,17 +1,12 @@
 # By placing all of Colibri's shared dependencies in this file and then loading
 # it for each component's Gemfile, we can be sure that we're only testing just
 # the one component of Colibri.
+
 source 'https://rubygems.org'
 
 platforms :ruby do
   gem 'mysql2'
-  gem 'pg'
   gem 'sqlite3'
-end
-
-platforms :jruby do
-  gem 'jruby-openssl'
-  gem 'activerecord-jdbcsqlite3-adapter'
 end
 
 gem 'coffee-rails', '~> 4.0.0'

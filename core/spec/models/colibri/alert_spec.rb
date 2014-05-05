@@ -10,7 +10,7 @@ module Colibri
     it "gets current alerts" do
       alerts_json = File.read(File.join(fixture_path, "alerts.json"))
 
-      stub_request(:get, "alerts.colibricommerce.com/alerts.json").
+      stub_request(:get, "alerts.colibriapp.com/alerts.json").
         with(:query => {
           version: Colibri.version,
           name: Colibri::Store.current.name,
@@ -20,13 +20,13 @@ module Colibri
         }).to_return(alerts_json)
       alerts = Colibri::Alert.current("localhost")
       alerts.first.should == {
-        "created_at"=>"2012-07-13T11:47:58Z",
-        "updated_at"=>"2012-07-13T11:47:58Z",
-        "url"=>"http://colibricommerce.com/blog/2012/07/12/colibri-1-0-6-released/",
+        "created_at"=>"2013-07-13T11:47:58Z",
+        "updated_at"=>"2013-07-13T11:47:58Z",
+        "url"=>"",
         "id"=>24,
         "url_name"=>"Blog Post",
         "severity"=>"Release",
-        "message"=>"Colibri 1.0.6 Released"
+        "message"=>"Colibri 1.0 Released"
       }
     end
   end
