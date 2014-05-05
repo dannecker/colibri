@@ -1,0 +1,19 @@
+<%= render :partial => 'colibri/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Colibri.t(:editing_zone) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Colibri.t(:back_to_zones_list), admin_zones_path, :icon => 'icon-arrow-left' %>
+  </li>
+<% end %>
+
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @zone } %>
+
+<%= form_for [:admin, @zone] do |zone_form| %>
+  <%= render :partial => 'form', :locals => { :zone_form => zone_form } %>
+  <div class="clear"></div>
+  <%= render :partial => 'colibri/admin/shared/edit_resource_links' %>
+<% end %>

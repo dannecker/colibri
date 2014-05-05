@@ -1,0 +1,31 @@
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @level } %>
+
+<%= form_tag do %>
+<br /><br />
+
+<h1><%= Colibri.t(:inventory_adjustment) %></h1>
+
+<table class="basic-table">
+  <thead data-hook="inventory_header">
+    <tr>
+      <th><%= Colibri.t(:sku) %></th>
+      <th><%= Colibri.t(:product) %></th>
+      <th><%= Colibri.t(:options) %></th>
+      <th><%= Colibri.t(:adjustment) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-hook="inventory_row">
+      <td><%= @variant.sku %></td>
+      <td><%= @variant.product.name %></td>
+      <td><%= variant_options @variant %></td>
+      <td>
+        <%= text_field :level, :adjustment, :class => 'quantity' %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%= submit_tag Colibri.t('actions.update') %>
+<%= Colibri.t(:or) %>
+<%= link_to Colibri.t('actions.cancel'), :controller => 'overview', :action => :index %>
+<% end %>

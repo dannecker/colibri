@@ -1,0 +1,32 @@
+<% content_for :page_actions do %>
+  <li>
+    <% if @return_authorization.can_receive? %>
+      <%= button_link_to Colibri.t(:receive), fire_admin_order_return_authorization_url(@order, @return_authorization, :e => 'receive'), :method => :put, :data => { :confirm => Colibri.t(:are_you_sure) }, :icon => 'icon-download-alt' %>
+    <% end %>
+  </li>
+  <li>
+    <% if @return_authorization.can_cancel? %>
+      <%= button_link_to Colibri.t('actions.cancel'), fire_admin_order_return_authorization_url(@order, @return_authorization, :e => 'cancel'), :method => :put, :data => { :confirm => Colibri.t(:are_you_sure) }, :icon => 'icon-remove' %>
+    <% end %>
+  </li>
+<% end %>
+
+<%= render :partial => 'colibri/admin/shared/order_tabs', :locals => { :current => 'Return Authorizations' } %>
+
+<% content_for :page_title do %>
+  <i class="icon-arrow-right"></i> <%= Colibri.t(:return_authorization) %> <%= @return_authorization.number %> (<%= Colibri.t(@return_authorization.state.downcase) %>)
+<% end %>
+
+
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @return_authorization } %>
+<%= form_for [:admin, @order, @return_authorization] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+      <%= button Colibri.t('actions.update'), 'icon-repeat' %>
+      <span class="or"><%= Colibri.t(:or) %></span>
+      <%= button_link_to Colibri.t('actions.cancel'), admin_order_return_authorizations_url(@order), :icon => 'icon-remove' %>
+    </div>
+  </fieldset>
+<% end %>

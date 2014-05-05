@@ -1,0 +1,15 @@
+<%= form_for [:admin, @product, @image], :html => { :multipart => true } do |f| %>
+  <fieldset data-hook="new_image">
+    <legend align="center"><%= Colibri.t(:new_image) %></legend>
+
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Colibri.t('actions.update'), 'icon-refresh' %>
+        <span class="or"><%= Colibri.t(:or) %></span>
+        <%= link_to_with_icon 'icon-remove', Colibri.t('actions.cancel'), admin_product_images_url(@product), :id => 'cancel_link', :class => 'button' %>
+      </div>
+  </fieldset>
+<% end %>
+
+<%= javascript_include_tag 'colibri/backend/images/new.js' %>

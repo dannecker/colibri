@@ -1,0 +1,27 @@
+<% content_for :sidebar do %>
+  <div data-hook="homepage_sidebar_navigation">
+    <% if "colibri/products" == params[:controller] && @taxon %>
+      <%= render :partial => 'colibri/shared/filters' %>
+    <% else %>
+      <%= render :partial => 'colibri/shared/taxonomies' %>
+    <% end %>
+  </div>
+<% end %>
+
+
+<% if params[:keywords] %>
+
+  <div data-hook="search_results">
+    <% if @products.empty? %>
+      <h6 class="search-results-title"><%= Colibri.t(:no_products_found) %></h6>
+    <% else %>
+      <%= render :partial => 'colibri/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+    <% end %>
+  </div>
+
+<% else %>
+
+  <div data-hook="homepage_products">
+    <%= render :partial => 'colibri/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+  </div>
+<% end %>

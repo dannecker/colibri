@@ -1,0 +1,18 @@
+<%= render :partial => 'colibri/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Colibri.t(:tax_settings) %>
+<% end %>
+
+<%= form_tag admin_tax_settings_path, :method => :put do %>
+  <div data-hook="shipment_vat" class="field align-center">
+    <%= hidden_field_tag 'preferences[shipment_inc_vat]', '0' %>
+    <%= check_box_tag 'preferences[shipment_inc_vat]', '1',  Colibri::Config[:shipment_inc_vat] %>
+    <%= label_tag nil, Colibri.t(:shipment_inc_vat) %>    
+
+  </div>
+
+  <div class="form-buttons" data-hook="buttons">
+    <%= button Colibri.t('actions.update'), 'icon-refresh' %>
+  </div>
+<% end %>

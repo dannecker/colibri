@@ -1,0 +1,13 @@
+<%= render :partial => 'colibri/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @property } %>
+
+<%= form_for [:admin, @property] do |f| %>
+<fieldset data-hook="new_property">
+  <legend align="center"><%= Colibri.t(:new_property) %></legend>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <div class="filter-actions">
+    <%= render :partial => 'colibri/admin/shared/new_resource_links' %>
+  </div>
+</fieldset>
+<% end %>

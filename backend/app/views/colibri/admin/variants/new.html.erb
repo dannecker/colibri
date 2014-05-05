@@ -1,0 +1,9 @@
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @variant } %>
+
+<%= form_for [:admin, @product, @variant] do |f| %>
+  <fieldset data-hook="admin_variant_new_form">
+    <legend align="center"><%= Colibri.t(:new_variant) %></legend>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'colibri/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

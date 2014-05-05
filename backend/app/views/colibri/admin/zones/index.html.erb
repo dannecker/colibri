@@ -1,0 +1,54 @@
+<%= render 'colibri/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Colibri.t(:zones) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Colibri.t(:new_zone), new_object_url, :icon => 'icon-plus', :id => 'admin_new_zone_link' %>
+  </li>
+<% end %>
+
+<%= paginate @zones %>
+
+<% if @zones.any? %>
+  <table class="index" id='listing_zones' data-hook>
+    <colgroup>
+      <col style="width: 30%" />
+      <col style="width: 40%" />
+      <col style="width: 15%" />
+      <col style="width: 15%" />
+    </colgroup>
+    <thead>
+      <tr data-hook="zones_header">
+        <th><%= sort_link @search,:name, Colibri.t(:name), :title => 'zones_order_by_name_title' %></th>
+        <th>
+          <%= sort_link @search,:description, Colibri.t(:description), {}, {:title => 'zones_order_by_description_title'} %>
+        </th>
+        <th><%= Colibri.t(:default_tax) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @zones.each do |zone| %>
+        <tr id="<%= colibri_dom_id zone %>" data-hook="zones_row" class="<%= cycle('odd', 'even')%>">
+          <td class="align-center"><%= zone.name %></td>
+          <td><%= zone.description %></td>
+          <td class="align-center"><%= zone.default_tax? ? Colibri.t(:say_yes) : Colibri.t(:say_no) %></td>
+          <td class="actions">
+            <%=link_to_edit zone, :no_text => true %>
+            <%=link_to_delete zone, :no_text => true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= Colibri.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.colibri/zone')) %>,
+    <%= link_to Colibri.t(:add_one), colibri.new_admin_zone_path %>!
+  </div>
+<% end %>
+
+<%= paginate @zones %>

@@ -1,0 +1,23 @@
+<%= render :partial => 'colibri/admin/shared/order_tabs', :locals => { :current => 'Customer Details' } %>
+
+<% content_for :page_title do %>
+  <i class="icon-arrow-right"></i> <%= Colibri.t(:customer_details) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Colibri.t(:back_to_orders_list), admin_orders_path, :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<div id="select-customer" data-hook>
+  <fieldset class="no-border-bottom">
+    <legend align="center"><%= Colibri.t(:customer_search) %></legend>
+    <%= hidden_field_tag :customer_search,  nil, :class => 'fullwidth title' %>
+    <%= render :partial => "colibri/admin/orders/customer_details/autocomplete", :formats => :js %>
+  </fieldset>
+</div>
+
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @order } %>
+
+<%= form_for @order, :url => admin_order_customer_url(@order) do |f| %>
+  <%= render 'form', :f => f %>
+<% end %>

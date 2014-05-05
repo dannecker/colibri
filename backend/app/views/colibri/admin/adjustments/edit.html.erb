@@ -1,0 +1,22 @@
+<%= render :partial => 'colibri/admin/shared/order_tabs', :locals => { :current => 'Adjustments' } %>
+
+<% content_for :page_title do %>
+  <i class="icon-arrow-right"></i> <%= Colibri.t(:edit) %> <%= Colibri.t(:adjustment) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Colibri.t(:back_to_adjustments_list), colibri.admin_order_adjustments_url(@order), :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @adjustment } %>
+<%= form_for @adjustment, :url => admin_order_adjustment_path(@order, @adjustment), :method => :put do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <div class="filter-actions actions" data-hook="buttons">
+      <%= button Colibri.t(:continue), 'icon-arrow-right' %>
+      <span class="or"><%= Colibri.t(:or) %></span>
+      <%= link_to_with_icon 'icon-remove', Colibri.t('actions.cancel'), admin_order_adjustments_url(@order), :class => 'button' %>
+    </div>
+  </fieldset>
+<% end %>

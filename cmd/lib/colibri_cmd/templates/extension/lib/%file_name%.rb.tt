@@ -1,0 +1,2 @@
+require 'colibri_core'
+require '<%=file_name%>/engine'

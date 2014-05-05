@@ -1,0 +1,31 @@
+<% content_for :page_title do %>
+  <%= Colibri.t(:editing_product) %> &ldquo;<%= @product.name %>&rdquo;
+<% end %>
+
+<% content_for :sidebar_title do %>
+  <span class="sku"><%= @product.sku %></span>
+<% end %>
+
+<% content_for :sidebar do %>
+  <nav class="menu">
+    <ul data-hook="admin_product_tabs">
+      <%= content_tag :li, :class => ('active' if current == 'Product Details') do %>
+        <%= link_to_with_icon 'icon-edit', Colibri.t(:product_details), edit_admin_product_url(@product) %>
+      <% end if can?(:admin, Colibri::Product) %>
+      <%= content_tag :li, :class => ('active' if current == 'Images') do %>
+        <%= link_to_with_icon 'icon-picture', Colibri.t(:images), admin_product_images_url(@product) %>
+      <% end if can?(:admin, Colibri::Image) %>
+      <%= content_tag :li, :class => ('active' if current == 'Variants') do %>
+        <%= link_to_with_icon 'icon-th-large', Colibri.t(:variants),  admin_product_variants_url(@product) %>
+      <% end if can?(:admin, Colibri::Variant) %>
+      <%= content_tag :li, :class => ('active' if current == 'Product Properties') do %>
+        <%= link_to_with_icon 'icon-tasks', Colibri.t(:product_properties), admin_product_product_properties_url(@product) %>
+      <% end if can?(:admin, Colibri::ProductProperty) %>
+      <%= content_tag :li, :class => ('active' if current == 'Stock Management') do %>
+        <%= link_to_with_icon 'icon-tasks', Colibri.t(:stock_management), stock_admin_product_url(@product) %>
+      <% end if can?(:stock, Colibri::Product) %>
+      </li>
+    </ul>
+  </nav>
+
+<% end %>

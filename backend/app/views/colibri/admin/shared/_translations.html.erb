@@ -1,0 +1,47 @@
+<script>
+  Colibri.translations = <%==
+  { :date_picker    => Colibri.t(:js_format,
+                              :scope => 'date_picker',
+                              :default => 'yy/mm/dd'),
+    :abbr_day_names           => I18n.t(:abbr_day_names, :scope => :date),
+    :add                      => Colibri.t(:add),
+    :are_you_sure_delete      => Colibri.t(:are_you_sure_delete),
+    :bill_address             => Colibri.t(:bill_address),
+    :choose_a_customer        => Colibri.t(:choose_a_customer),
+    :confirm_delete           => Colibri.t(:confirm_delete),
+    :cut                      => Colibri.t(:cut),
+    :destroy                  => Colibri.t(:destroy, :scope => :actions),
+    :edit                     => Colibri.t(:edit,    :scope => :actions),
+    :save                     => Colibri.t(:save,    :scope => :actions),
+    :cancel                   => Colibri.t(:cancel,  :scope => :actions),
+    :first_day                => Colibri.t(:first_day,
+                                         :scope => 'date_picker',
+                                         :default => 0).to_i,
+    :find_a_taxon             => Colibri.t(:find_a_taxon),
+    :item_stock_placeholder   => Colibri.t(:choose_location),
+    :loading                  => Colibri.t(:loading),
+    :month_names              => I18n.t(:month_names, :scope => :date).reject(&:blank?),
+    :more                     => Colibri.t(:more),
+    :name                     => Colibri.t(:name),
+    :next                     => Colibri.t(:next),
+    :no_results               => Colibri.t(:no_results),
+    :option_type_placeholder  => Colibri.t(:option_type_placeholder),
+    :paste                    => Colibri.t(:paste),
+    :previous                 => Colibri.t(:previous),
+    :remove                   => Colibri.t(:remove),
+    :rename                   => Colibri.t(:rename),
+    :searching                => Colibri.t(:searching),
+    :sku                      => Colibri.t(:sku),
+    :type_to_search           => Colibri.t(:type_to_search),
+    :taxon_placeholder        => Colibri.t(:taxon_placeholder),
+    :variant_placeholder      => Colibri.t(:variant_placeholder),
+    :value                    => Colibri.t(:value),
+    :currency_separator       => I18n.t('number.currency.format.separator'),
+
+  }.to_json
+%>
+</script>
+
+<% if I18n.locale != :en %>
+  <%= javascript_include_tag "select2_locale_#{I18n.locale}" %>
+<% end %>

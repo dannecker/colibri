@@ -1,0 +1,6 @@
+eval(File.read(File.dirname(__FILE__) + '/../common_colibri_dependencies.rb'))
+
+gem 'colibri_core', :path => '../core'
+gem 'colibri_api', :path => '../api'
+
+gemspec

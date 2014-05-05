@@ -1,0 +1,22 @@
+<fieldset id="order_summary" data-hook>
+  <legend><%= Colibri.t(:order_number, :number => @order.number) %></legend>
+  <h1><%= accurate_title %></h1>
+
+  <div id="order" data-hook>
+    <% if order_just_completed?(@order) %>
+      <h1><%= Colibri.t(:thank_you_for_your_order) %></h1>
+    <% end %>
+    <%= render :partial => 'colibri/shared/order_details', :locals => { :order => @order } %>
+
+    <br class="clear" />
+
+    <p data-hook="links">
+      <%= link_to Colibri.t(:back_to_store), colibri.root_path, :class => "button" %>
+      <% unless order_just_completed?(@order) %>
+        <% if try_colibri_current_user && respond_to?(:colibri_account_path) %>
+          <%= link_to Colibri.t(:my_account), colibri_account_path, :class => "button" %>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+</fieldset>

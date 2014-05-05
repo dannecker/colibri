@@ -1,0 +1,24 @@
+<%= render 'colibri/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Colibri.t(:taxonomies) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Colibri.t(:new_taxonomy), colibri.new_admin_taxonomy_url, :icon => 'icon-plus', :id => 'admin_new_taxonomy_link' %>
+  </li>
+<% end %>
+
+<%= render 'colibri/admin/shared/product_sub_menu' %>
+
+<% if @taxonomies.any? %>
+<div id="list-taxonomies" data-hook>
+  <%= render 'list' %>
+</div>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= Colibri.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.colibri/taxonomy')) %>,
+    <%= link_to Colibri.t(:add_one), colibri.new_admin_taxonomy_path %>!
+  </div>
+<% end %>

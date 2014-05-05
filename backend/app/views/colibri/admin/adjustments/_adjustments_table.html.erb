@@ -1,0 +1,21 @@
+<table class="index adjustments" data-hook="adjustments">
+  <thead data-hook="adjustmment_head">
+    <tr>
+      <th><%= Colibri.t(:adjustable) %></th>
+      <th><%= Colibri.t(:description) %></th>
+      <th><%= Colibri.t(:amount) %></th>
+      <th><%= Colibri.t(:state) %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => "adjustment", :collection => @adjustments %>
+    <tr>
+      <td class="align-center" colspan='4'>
+        <%= button_to Colibri.t(:open_all_adjustments), open_adjustments_admin_order_path(@order), :method => :get %>&nbsp;
+        <%= button_to Colibri.t(:close_all_adjustments), close_adjustments_admin_order_path(@order), :method => :get %>
+      </td>
+      <td class='actions'>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,43 @@
+<%= render :partial => 'colibri/admin/shared/configuration_menu' %>
+
+<%= render :partial => 'js_head' %>
+
+<% content_for :page_title do %>
+  <%= Colibri.t(:taxonomy_edit) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Colibri.t(:back_to_taxonomies_list), colibri.admin_taxonomies_path, :icon => 'icon-arrow-left' %>
+  </li>
+<% end %>
+
+<div id="ajax_error" class="errorExplanation" style="display:none;"></div>
+
+<%= form_for [:admin, @taxonomy] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <div>
+      <%= label_tag nil, Colibri.t(:tree) %><br />
+      <script>
+        Colibri.routes.taxonomy_taxons_path = "<%= colibri.api_taxonomy_taxons_path(@taxonomy) %>";
+        Colibri.routes.admin_taxonomy_taxons_path = "<%= colibri.admin_taxonomy_taxons_path(@taxonomy) %>";
+        Colibri.routes.jstree_theme_path = "<%= stylesheet_path("jquery.jstree/themes/apple/style.css") %>";
+      </script>
+      <div id="taxonomy_tree" class="tree"></div>
+    </div>
+    <div id="progress" style="display:none;">
+      <%= image_tag 'select2-spinner.gif', :title => 'Spinner', :style => "vertical-align:bottom;" %> <%= Colibri.t(:updating) %>..
+    </div>
+
+    <div class="info"><%= Colibri.t(:taxonomy_tree_instruction) %></div>
+
+    <br>
+
+    <div class="filter-actions actions">
+      <%= button Colibri.t('actions.update'), 'icon-refresh' %>
+      <span class="or"><%= Colibri.t(:or) %></span>
+      <%= button_link_to Colibri.t('actions.cancel'), admin_taxonomies_path, :icon => 'icon-remove' %>
+    </div>
+  </fieldset>
+<% end %>

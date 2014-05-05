@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'colibri', github: 'colibri/colibri'
+# Provides basic authentication functionality for testing parts of your engine
+gem 'colibri_auth_devise', github: 'colibri/colibri_auth_devise'
+
+gemspec

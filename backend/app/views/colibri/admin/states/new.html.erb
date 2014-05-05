@@ -1,0 +1,15 @@
+<%= render :partial => 'colibri/admin/shared/configuration_menu' %>
+
+<%= render :partial => 'colibri/shared/error_messages', :locals => { :target => @state } %>
+
+<% content_for :page_title do %>
+  <%= Colibri.t(:new_state) %>
+<% end %>
+
+<%= form_for [:admin, @country, @state] do |f| %>
+  <fieldset>
+    <legend><%= Colibri.t(:new_state) %></legend>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'colibri/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

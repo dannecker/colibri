@@ -1,0 +1,21 @@
+<fieldset data-hook="credit_card">
+  <legend align="center"><%= Colibri.t(:credit_card) %></legend>
+
+  <div class="row">
+    <div class="alpha six columns">
+      <dl>
+        <dt><%= Colibri.t(:name_on_card) %>:</dt>
+        <dd><%= payment.source.name %></dd>
+
+        <dt><%= Colibri.t(:card_type) %>:</dt>
+        <dd><%= payment.source.cc_type %></dd>
+
+        <dt><%= Colibri.t(:card_number) %>:</dt>
+        <dd><%= payment.source.display_number %></dd>
+
+        <dt><%= Colibri.t(:expiration) %>:</dt>
+        <dd><%= payment.source.month %>/<%= payment.source.year %></dd>
+      </dl>
+    </div>
+  </div>
+</fieldset>
