@@ -6,7 +6,7 @@ gem 'colibri', path: ''
 gem 'colibri_auth_devise', path: ''
 ```
 
-In config/initializers/colibri.rb 
+In `config/initializers/colibri.rb`:
 ```ruby
 Colibri.user_class = "Colibri::User"
 ```
