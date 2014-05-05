@@ -25,3 +25,9 @@ COVERAGE=true bundle exec rspec spec
 bundle exec rspec spec
 ```
 
+or shortcut gen:
+
+```shell
+rails g colibri:install --migrate=false --sample=false --seed=false
+```
+
