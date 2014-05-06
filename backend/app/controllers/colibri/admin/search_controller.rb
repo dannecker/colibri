@@ -1,7 +1,6 @@
 module Colibri
   module Admin
     class SearchController < Colibri::Admin::BaseController
-      # http://colibricommerce.com/blog/2010/11/02/json-hijacking-vulnerability/
       before_filter :check_json_authenticity, :only => :index
       respond_to :json
 
